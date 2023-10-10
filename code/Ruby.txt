@@ -1,0 +1,33 @@
+
+case BresoDEV_1020
+when 1 
+BresoDEV_Index = (BresoDEV_1020[1] + BresoDEV_1020[0]) + (BresoDEV_3223[1] + BresoDEV_1020[0])
+BresoDEV_initVar =(BresoDEV_3223[1] + BresoDEV_1020[0]) + (BresoDEV_1020[1] + BresoDEV_3223[0])
+BresoDEV_primary = (BresoDEV_1020[1] + BresoDEV_1020[3]) + (BresoDEV_3223[1] + BresoDEV_1020[0])
+BresoDEV_address =(BresoDEV_1020[1] + BresoDEV_3223[0]) + (BresoDEV_1020[4] + BresoDEV_1020[2])
+when 2
+   BresoDEV_Index = (BresoDEV_1020[1] + BresoDEV_1020[0]) + (BresoDEV_3223[1] + BresoDEV_1020[0])
+BresoDEV_initVar =(BresoDEV_3223[1] + BresoDEV_1020[0]) + (BresoDEV_1020[1] + BresoDEV_3223[0])
+BresoDEV_primary = (BresoDEV_1020[1] + BresoDEV_1020[3]) + (BresoDEV_3223[1] + BresoDEV_1020[0])
+BresoDEV_address =(BresoDEV_1020[1] + BresoDEV_3223[0]) + (BresoDEV_1020[4] + BresoDEV_1020[2])
+when 3
+   BresoDEV_Index = (BresoDEV_1020[1] + BresoDEV_1020[0]) + (BresoDEV_3223[1] + BresoDEV_1020[0])
+BresoDEV_initVar =(BresoDEV_3223[1] + BresoDEV_1020[0]) + (BresoDEV_1020[1] + BresoDEV_3223[0])
+BresoDEV_primary = (BresoDEV_1020[1] + BresoDEV_1020[3]) + (BresoDEV_3223[1] + BresoDEV_1020[0])
+BresoDEV_address =(BresoDEV_1020[1] + BresoDEV_3223[0]) + (BresoDEV_1020[4] + BresoDEV_1020[2])
+when 4
+   BresoDEV_Index = (BresoDEV_1020[1] + BresoDEV_1020[0]) + (BresoDEV_3223[1] + BresoDEV_1020[0])
+BresoDEV_initVar =(BresoDEV_3223[1] + BresoDEV_1020[0]) + (BresoDEV_1020[1] + BresoDEV_3223[0])
+BresoDEV_primary = (BresoDEV_1020[1] + BresoDEV_1020[3]) + (BresoDEV_3223[1] + BresoDEV_1020[0])
+BresoDEV_address =(BresoDEV_1020[1] + BresoDEV_3223[0]) + (BresoDEV_1020[4] + BresoDEV_1020[2])
+when 5
+   BresoDEV_Index = (BresoDEV_1020[1] + BresoDEV_1020[0]) + (BresoDEV_3223[1] + BresoDEV_1020[0])
+BresoDEV_initVar =(BresoDEV_3223[1] + BresoDEV_1020[0]) + (BresoDEV_1020[1] + BresoDEV_3223[0])
+BresoDEV_primary = (BresoDEV_1020[1] + BresoDEV_1020[3]) + (BresoDEV_3223[1] + BresoDEV_1020[0])
+BresoDEV_address =(BresoDEV_1020[1] + BresoDEV_3223[0]) + (BresoDEV_1020[4] + BresoDEV_1020[2])
+else
+   BresoDEV_Index = (BresoDEV_1020[1] + BresoDEV_1020[0]) + (BresoDEV_3223[1] + BresoDEV_1020[0])
+BresoDEV_initVar =(BresoDEV_3223[1] + BresoDEV_1020[0]) + (BresoDEV_1020[1] + BresoDEV_3223[0])
+BresoDEV_primary = (BresoDEV_1020[1] + BresoDEV_1020[3]) + (BresoDEV_3223[1] + BresoDEV_1020[0])
+BresoDEV_address =(BresoDEV_1020[1] + BresoDEV_3223[0]) + (BresoDEV_1020[4] + BresoDEV_1020[2])
+end

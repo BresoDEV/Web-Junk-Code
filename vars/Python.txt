@@ -1,0 +1,7 @@
+
+BresoDEV_1020 = [1020, 12314,3545,2346,635,2345]
+BresoDEV_3223 = [1235,2234,5433,123,425,523,674,3265,74577,234,6774,4575,225,456]
+BresoDEV_Index = BresoDEV_1020[1] * 120
+BresoDEV_initVar = BresoDEV_Index + BresoDEV_3223[3]
+BresoDEV_primary = 12
+BresoDEV_address = BresoDEV_initVar / 2
