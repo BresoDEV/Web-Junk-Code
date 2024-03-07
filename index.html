@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Junk Code Generator</title>
+</head>
+<style>
+    * {
+        background-color: #333;
+        color: aliceblue;
+        margin: 0;
+    }
+
+    .ct {
+        width: 90%;
+    }
+
+    textarea {
+        color: #999;
+    }
+
+    textarea,
+    table,
+    select {
+        width: 95%;
+        resize: none;
+        margin: 3px;
+        max-height: 100px;
+    }
+
+    input {
+        width: 90%;
+        resize: none;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    table,
+    tr,
+    td,
+    th {
+        border: 1px solid red;
+    }
+
+    button {
+        margin: 5px;
+        width: 90%;
+        border: none;
+        background-color: #666;
+    }
+</style>
+
+<body>
+    <center>
+        <div class="ct">
+
+            <table>
+                <tr>
+                    <th colspan=2>Breso JunkCode Generator</th>
+                </tr>
+                <tr>
+                    <td>Padrao de Nomes:</td>
+                    <td><input type="text" name="variavel" id="variavel" value="BresoDEV" required></td>
+                </tr>
+                <tr>
+                    <td><label for="linguagem">Linguagem</label></td>
+                    <td>
+                        <select name="linguagem" id="linguagem">
+                            <option value="csharp">C#</option>
+                            <option value="cmm">C++</option>
+                            <option value="HTML">HTML</option>
+                            <option value="Javascript">Javascript</option>
+                            <option value="LUA">LUA</option>
+                            <option value="PHP">PHP</option>
+                            <option value="Python">Python</option>
+                            <option value="Ruby">Ruby</option>
+                            <option value="VBNet">VBNet</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan=2><button id="gerar">Gerar Junk Code</button></td>
+                </tr>
+
+            </table>
+            <br>
+
+            <div id="tabela" style="display: none">
+                <table>
+                    <tr>
+                        <th colspan=2>Variaveis:</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <textarea name="" id="var" cols="30" rows="10"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan=2><button onclick="CopiarVars()">Copiar Codigo</button></td>
+                    </tr>
+                </table>
+
+
+                <table>
+                    <tr>
+                        <th colspan=2>Codigo:</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <textarea name="" id="code" cols="30" rows="10"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan=2><button onclick="CopiarCode()">Copiar Codigo</button></td>
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
+    </center>
+</body>
+<script>
+
+    const gerar = document.getElementById('gerar');
+
+
+
+    gerar.addEventListener('click', () => {
+        const tabela = document.getElementById('tabela');
+        const linguagem = document.getElementById('linguagem');
+
+        const code = document.getElementById('code');
+        const vars = document.getElementById('var');
+
+        tabela.style.display = 'block';
+        if (linguagem.value === 'csharp') {
+            code.value = gerarCodigo_Csharp(document.getElementById('variavel').value);
+            vars.value = gerarVariaveis_Csharp(document.getElementById('variavel').value);
+        }
+        if (linguagem.value === 'cmm') {
+            code.value = gerarCodigo_Cmm(document.getElementById('variavel').value);
+            vars.value = gerarVariaveis_Cmm(document.getElementById('variavel').value);
+        }
+        if (linguagem.value === 'HTML') {
+            code.value = gerarCodigo_HTML(document.getElementById('variavel').value);
+            vars.value = gerarVariaveis_HTML(document.getElementById('variavel').value);
+        }
+        if (linguagem.value === 'Javascript') {
+            code.value = gerarCodigo_Javascript(document.getElementById('variavel').value);
+            vars.value = gerarVariaveis_Javascript(document.getElementById('variavel').value);
+        }
+        if (linguagem.value === 'LUA') {
+            code.value = gerarCodigo_LUA(document.getElementById('variavel').value);
+            vars.value = gerarVariaveis_LUA(document.getElementById('variavel').value);
+        }
+        if (linguagem.value === 'PHP') {
+            code.value = gerarCodigo_PHP(document.getElementById('variavel').value);
+            vars.value = gerarVariaveis_PHP(document.getElementById('variavel').value);
+        }
+        if (linguagem.value === 'Python') {
+            code.value = gerarCodigo_Python(document.getElementById('variavel').value);
+            vars.value = gerarVariaveis_Python(document.getElementById('variavel').value);
+        }
+        if (linguagem.value === 'Ruby') {
+            code.value = gerarCodigo_Ruby(document.getElementById('variavel').value);
+            vars.value = gerarVariaveis_Ruby(document.getElementById('variavel').value);
+        }
+
+        if (linguagem.value === 'VBNet') {
+            code.value = gerarCodigo_VBNet(document.getElementById('variavel').value);
+            vars.value = gerarVariaveis_VBNet(document.getElementById('variavel').value);
+        }
+
+        msgbox('Sucesso','Codigo gerado com sucesso!');
+    });
+
+
+
+    //function gerarVariaveis_(vaar) {
+    //    return ``;
+    //}
+    //function gerarCodigo_(vaar) {
+    //    return ``;
+    //}
+
+    function gerarVariaveis_VBNet(vaar) {
+        return `Dim ${vaar}_1020 As Integer
+Dim ${vaar}_3223 As Integer
+Dim ${vaar}_Index As Integer
+Dim ${vaar}_initVar As Integer
+Dim ${vaar}_primary As Integer
+Dim ${vaar}_address As Integer`;
+    }
+    function gerarCodigo_VBNet(vaar) {
+        return `
+${vaar}_1020 = 15
+${vaar}_3223 = 1234
+${vaar}_Index = (${vaar}_1020 + 2) * ${vaar}_3223
+${vaar}_initVar = (${vaar}_Index + 23) * ${vaar}_1020
+ 
+If count = 0 Then
+	${vaar}_1020 = 15
+	${vaar}_3223 = 1234
+	${vaar}_Index = (${vaar}_1020 + 2) * ${vaar}_3223
+	${vaar}_initVar = (${vaar}_Index + 23) * ${vaar}_1020
+ElseIf count = 1 Then
+	${vaar}_1020 = 5
+	${vaar}_3223 = 34
+	${vaar}_Index = (${vaar}_1020 + 22) * ${vaar}_3223
+	${vaar}_initVar = (${vaar}_Index + 21) * ${vaar}_1020
+Else
+	${vaar}_1020 = 17
+	${vaar}_3223 = 14
+	${vaar}_Index = (${vaar}_1020 + 2) * ${vaar}_3223
+	${vaar}_initVar = (${vaar}_Index + 29) * ${vaar}_1020
+End If
+If count = 0 Then
+	${vaar}_1020 = 15
+	${vaar}_3223 = 1234
+	${vaar}_Index = (${vaar}_1020 + 2) * ${vaar}_3223
+	${vaar}_initVar = (${vaar}_Index + 23) * ${vaar}_1020
+ElseIf count = 1 Then
+	${vaar}_1020 = 5
+	${vaar}_3223 = 34
+	${vaar}_Index = (${vaar}_1020 + 22) * ${vaar}_3223
+	${vaar}_initVar = (${vaar}_Index + 21) * ${vaar}_1020
+Else
+	${vaar}_1020 = 17
+	${vaar}_3223 = 14
+	${vaar}_Index = (${vaar}_1020 + 2) * ${vaar}_3223
+	${vaar}_initVar = (${vaar}_Index + 29) * ${vaar}_1020
+End If`;
+    }
+    function gerarVariaveis_Ruby(vaar) {
+        return `
+${vaar}_1020 = [1, 2, 3, 4, 5, 6]
+${vaar}_3223 = [1, 2, 3, 4, 5, 6]
+${vaar}_Index = (${vaar}_1020[1] + ${vaar}_1020[0]) + (${vaar}_3223[1] + ${vaar}_1020[0])
+${vaar}_initVar =(${vaar}_3223[1] + ${vaar}_1020[0]) + (${vaar}_1020[1] + ${vaar}_3223[0])
+${vaar}_primary = (${vaar}_1020[1] + ${vaar}_1020[3]) + (${vaar}_3223[1] + ${vaar}_1020[0])
+${vaar}_address =(${vaar}_1020[1] + ${vaar}_3223[0]) + (${vaar}_1020[4] + ${vaar}_1020[2])`;
+    }
+    function gerarCodigo_Ruby(vaar) {
+        return `case ${vaar}_1020
+when 1 
+${vaar}_Index = (${vaar}_1020[1] + ${vaar}_1020[0]) + (${vaar}_3223[1] + ${vaar}_1020[0])
+${vaar}_initVar =(${vaar}_3223[1] + ${vaar}_1020[0]) + (${vaar}_1020[1] + ${vaar}_3223[0])
+${vaar}_primary = (${vaar}_1020[1] + ${vaar}_1020[3]) + (${vaar}_3223[1] + ${vaar}_1020[0])
+${vaar}_address =(${vaar}_1020[1] + ${vaar}_3223[0]) + (${vaar}_1020[4] + ${vaar}_1020[2])
+when 2
+   ${vaar}_Index = (${vaar}_1020[1] + ${vaar}_1020[0]) + (${vaar}_3223[1] + ${vaar}_1020[0])
+${vaar}_initVar =(${vaar}_3223[1] + ${vaar}_1020[0]) + (${vaar}_1020[1] + ${vaar}_3223[0])
+${vaar}_primary = (${vaar}_1020[1] + ${vaar}_1020[3]) + (${vaar}_3223[1] + ${vaar}_1020[0])
+${vaar}_address =(${vaar}_1020[1] + ${vaar}_3223[0]) + (${vaar}_1020[4] + ${vaar}_1020[2])
+when 3
+   ${vaar}_Index = (${vaar}_1020[1] + ${vaar}_1020[0]) + (${vaar}_3223[1] + ${vaar}_1020[0])
+${vaar}_initVar =(${vaar}_3223[1] + ${vaar}_1020[0]) + (${vaar}_1020[1] + ${vaar}_3223[0])
+${vaar}_primary = (${vaar}_1020[1] + ${vaar}_1020[3]) + (${vaar}_3223[1] + ${vaar}_1020[0])
+${vaar}_address =(${vaar}_1020[1] + ${vaar}_3223[0]) + (${vaar}_1020[4] + ${vaar}_1020[2])
+when 4
+   ${vaar}_Index = (${vaar}_1020[1] + ${vaar}_1020[0]) + (${vaar}_3223[1] + ${vaar}_1020[0])
+${vaar}_initVar =(${vaar}_3223[1] + ${vaar}_1020[0]) + (${vaar}_1020[1] + ${vaar}_3223[0])
+${vaar}_primary = (${vaar}_1020[1] + ${vaar}_1020[3]) + (${vaar}_3223[1] + ${vaar}_1020[0])
+${vaar}_address =(${vaar}_1020[1] + ${vaar}_3223[0]) + (${vaar}_1020[4] + ${vaar}_1020[2])
+when 5
+   ${vaar}_Index = (${vaar}_1020[1] + ${vaar}_1020[0]) + (${vaar}_3223[1] + ${vaar}_1020[0])
+${vaar}_initVar =(${vaar}_3223[1] + ${vaar}_1020[0]) + (${vaar}_1020[1] + ${vaar}_3223[0])
+${vaar}_primary = (${vaar}_1020[1] + ${vaar}_1020[3]) + (${vaar}_3223[1] + ${vaar}_1020[0])
+${vaar}_address =(${vaar}_1020[1] + ${vaar}_3223[0]) + (${vaar}_1020[4] + ${vaar}_1020[2])
+else
+   ${vaar}_Index = (${vaar}_1020[1] + ${vaar}_1020[0]) + (${vaar}_3223[1] + ${vaar}_1020[0])
+${vaar}_initVar =(${vaar}_3223[1] + ${vaar}_1020[0]) + (${vaar}_1020[1] + ${vaar}_3223[0])
+${vaar}_primary = (${vaar}_1020[1] + ${vaar}_1020[3]) + (${vaar}_3223[1] + ${vaar}_1020[0])
+${vaar}_address =(${vaar}_1020[1] + ${vaar}_3223[0]) + (${vaar}_1020[4] + ${vaar}_1020[2])
+end`;
+    }
+
+    function gerarVariaveis_Python(vaar) {
+        return `
+${vaar}_1020 = [1020, 12314,3545,2346,635,2345]
+${vaar}_3223 = [1235,2234,5433,123,425,523,674,3265,74577,234,6774,4575,225,456]
+${vaar}_Index = ${vaar}_1020[1] * 120
+${vaar}_initVar = ${vaar}_Index + ${vaar}_3223[3]
+${vaar}_primary = 12
+${vaar}_address = ${vaar}_initVar / 2`;
+    }
+    function gerarCodigo_Python(vaar) {
+        return `if ${vaar}_initVar > 10: 
+  if ${vaar}_initVar < 20: 
+  ${vaar}_address = ${vaar}_primary / 2
+  if ${vaar}_initVar > 10: 
+  if ${vaar}_initVar < 20: 
+  ${vaar}_address = ${vaar}_initVar / 2
+  else:
+  ${vaar}_address = ${vaar}_initVar / 4
+  else:  
+${vaar}_address = ${vaar}_primary / 8
+  else:
+  ${vaar}_address = ${vaar}_initVar / 4
+  if ${vaar}_initVar > 10: 
+  if ${vaar}_primary < 20: 
+  ${vaar}_address = ${vaar}_initVar / 2
+  else:
+  ${vaar}_address = ${vaar}_initVar / 4
+  else:  
+${vaar}_address = ${vaar}_primary / 8
+  else:  
+${vaar}_address = ${vaar}_initVar / 8
+if ${vaar}_initVar > 10: 
+  if ${vaar}_initVar < 20: 
+  ${vaar}_address = ${vaar}_initVar / 2
+  if ${vaar}_initVar > 10: 
+  if ${vaar}_initVar < 20: 
+  ${vaar}_primary = ${vaar}_initVar / 2
+  else:
+  ${vaar}_address = ${vaar}_initVar / 4
+  else:  
+${vaar}_address = ${vaar}_primary / 8
+  else:
+  ${vaar}_address = ${vaar}_initVar / 4
+  if ${vaar}_initVar > 10: 
+  if ${vaar}_initVar < 20: 
+  ${vaar}_address = ${vaar}_initVar / 2
+  else:
+  ${vaar}_address = ${vaar}_initVar / 4
+  else:  
+${vaar}_address = ${vaar}_initVar / 8
+  else:  
+${vaar}_address = ${vaar}_initVar / 8`;
+    }
+
+    function gerarVariaveis_PHP(vaar) {
+        return `$${vaar}_1020 = [0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9];
+$${vaar}_3223 = [0xA, 0xB, 0xC, 0xD, 0xE, 0xF];
+
+$${vaar}_Index = ($${vaar}_3223[$${vaar}_1020[0x0]] + $${vaar}_3223[$${vaar}_1020[0x5]]) - 25;
+$${vaar}_initVar = ($${vaar}_3223[$${vaar}_1020[0x2]] + ($${vaar}_Index * 0xA)) + 262 - 274;
+$${vaar}_primary = (($${vaar}_3223[$${vaar}_1020[0x2]] + ($${vaar}_Index * 0xA)) + ($${vaar}_3223[$${vaar}_1020[0x3]] + ($${vaar}_Index / 0xA))) - 277 + 252;
+$${vaar}_address = ($${vaar}_3223[$${vaar}_1020[0x2]] * ($${vaar}_Index * 0xA)) - ($${vaar}_3223[$${vaar}_1020[0x3]] * ($${vaar}_Index / 0xA));
+`;
+    }
+    function gerarCodigo_PHP(vaar) {
+        return `
+switch ($${vaar}_Index) {
+    case 0:
+        $${vaar}_Index = array_sum($${vaar}_3223);
+		$${vaar}_initVar = array_sum($${vaar}_3223) + array_sum($${vaar}_1020);
+		$${vaar}_primary = $${vaar}_Index + array_sum($${vaar}_3223);
+		$${vaar}_address = array_sum($${vaar}_3223) * 2;
+		switch ($${vaar}_Index) {
+    case 0:
+        $${vaar}_Index = array_sum($${vaar}_3223);
+		$${vaar}_initVar = array_sum($${vaar}_3223) + array_sum($${vaar}_1020);
+		$${vaar}_primary = $${vaar}_Index + array_sum($${vaar}_3223);
+		$${vaar}_address = array_sum($${vaar}_3223) * 2;
+        break;
+    case 1:
+        $${vaar}_Index = array_sum($${vaar}_3223);
+		$${vaar}_initVar = array_sum($${vaar}_3223) * 10;
+		$${vaar}_primary = $${vaar}_Index + array_sum($${vaar}_3223);
+		$${vaar}_address = array_sum($${vaar}_3223) + 3;
+        break;
+    case 2:
+        $${vaar}_Index = array_sum($${vaar}_3223);
+		$${vaar}_initVar = array_sum($${vaar}_3223) + array_sum($${vaar}_1020);
+		$${vaar}_primary = $${vaar}_Index * 2;
+		$${vaar}_address = array_sum($${vaar}_3223) + 1;
+        break;
+}
+        break;
+    case 1:
+        $${vaar}_Index = array_sum($${vaar}_3223);
+		$${vaar}_initVar = array_sum($${vaar}_3223) * 10;
+		$${vaar}_primary = $${vaar}_Index + array_sum($${vaar}_3223);
+		$${vaar}_address = array_sum($${vaar}_3223) + 3;
+		switch ($${vaar}_Index) {
+    case 0:
+        $${vaar}_Index = array_sum($${vaar}_3223);
+		$${vaar}_initVar = array_sum($${vaar}_3223) + array_sum($${vaar}_1020);
+		$${vaar}_primary = $${vaar}_Index + array_sum($${vaar}_3223);
+		$${vaar}_address = array_sum($${vaar}_3223) * 2;
+        break;
+    case 1:
+        $${vaar}_Index = array_sum($${vaar}_3223);
+		$${vaar}_initVar = array_sum($${vaar}_3223) * 10;
+		$${vaar}_primary = $${vaar}_Index + array_sum($${vaar}_3223);
+		$${vaar}_address = array_sum($${vaar}_3223) + 3;
+        break;
+    case 2:
+        $${vaar}_Index = array_sum($${vaar}_3223);
+		$${vaar}_initVar = array_sum($${vaar}_3223) + array_sum($${vaar}_1020);
+		$${vaar}_primary = $${vaar}_Index * 2;
+		$${vaar}_address = array_sum($${vaar}_3223) + 1;
+        break;
+}
+        break;
+    case 2:
+        $${vaar}_Index = array_sum($${vaar}_3223);
+		$${vaar}_initVar = array_sum($${vaar}_3223) + array_sum($${vaar}_1020);
+		$${vaar}_primary = $${vaar}_Index * 2;
+		$${vaar}_address = array_sum($${vaar}_3223) + 1;
+		switch ($${vaar}_Index) {
+    case 0:
+        $${vaar}_Index = array_sum($${vaar}_3223);
+		$${vaar}_initVar = array_sum($${vaar}_3223) + array_sum($${vaar}_1020);
+		$${vaar}_primary = $${vaar}_Index + array_sum($${vaar}_3223);
+		$${vaar}_address = array_sum($${vaar}_3223) * 2;
+        break;
+    case 1:
+        $${vaar}_Index = array_sum($${vaar}_3223);
+		$${vaar}_initVar = array_sum($${vaar}_3223) * 10;
+		$${vaar}_primary = $${vaar}_Index + array_sum($${vaar}_3223);
+		$${vaar}_address = array_sum($${vaar}_3223) + 3;
+        break;
+    case 2:
+        $${vaar}_Index = array_sum($${vaar}_3223);
+		$${vaar}_initVar = array_sum($${vaar}_3223) + array_sum($${vaar}_1020);
+		$${vaar}_primary = $${vaar}_Index * 2;
+		$${vaar}_address = array_sum($${vaar}_3223) + 1;
+        break;
+}
+        break;
+}`;
+    }
+
+    function gerarVariaveis_LUA(vaar) {
+        return `var ${vaar}_1020 = 100;
+var ${vaar}_3223 = ${vaar}_1020 + 120;
+var ${vaar}_Index = 1323;
+var ${vaar}_initVar = ${vaar}_3223 * 2;
+var ${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+var ${vaar}_address = ${vaar}_primary * 10;`;
+    }
+    function gerarCodigo_LUA(vaar) {
+        return `
+
+if (true) 
+{
+  switch (${vaar}_1020) 
+  {
+  case 1:
+    ${vaar}_1020 = 100;
+	${vaar}_3223 = ${vaar}_1020 + 1220;
+	${vaar}_Index = 132;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 2;
+	if (true) 
+{
+  switch (${vaar}_1020) 
+  {
+  case 1:
+    ${vaar}_1020 = 100;
+	${vaar}_3223 = ${vaar}_1020 + 1220;
+	${vaar}_Index = 132;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 2;
+    break;
+  case 1:
+	${vaar}_1020 = 102;
+	${vaar}_3223 = ${vaar}_1020 + 134;
+	${vaar}_Index = 24552;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 23;
+    break;
+  default:
+    ${vaar}_1020 = 102;
+	${vaar}_3223 = ${vaar}_1020 + 134;
+	${vaar}_Index = 24552;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 23; 
+	}
+}
+    break;
+  case 1:
+	${vaar}_1020 = 102;
+	${vaar}_3223 = ${vaar}_1020 + 134;
+	${vaar}_Index = 24552;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 23;
+	if (true) 
+{
+  switch (${vaar}_1020) 
+  {
+  case 1:
+    ${vaar}_1020 = 100;
+	${vaar}_3223 = ${vaar}_1020 + 1220;
+	${vaar}_Index = 132;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 2;
+    break;
+  case 1:
+	${vaar}_1020 = 102;
+	${vaar}_3223 = ${vaar}_1020 + 134;
+	${vaar}_Index = 24552;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 23;
+    break;
+  default:
+    ${vaar}_1020 = 102;
+	${vaar}_3223 = ${vaar}_1020 + 134;
+	${vaar}_Index = 24552;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 23; 
+	}
+}
+    break;
+  default:
+    ${vaar}_1020 = 102;
+	${vaar}_3223 = ${vaar}_1020 + 134;
+	${vaar}_Index = 24552;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 23; 
+	if (true) 
+{
+  switch (${vaar}_1020) 
+  {
+  case 1:
+    ${vaar}_1020 = 100;
+	${vaar}_3223 = ${vaar}_1020 + 1220;
+	${vaar}_Index = 132;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 2;
+    break;
+  case 1:
+	${vaar}_1020 = 102;
+	${vaar}_3223 = ${vaar}_1020 + 134;
+	${vaar}_Index = 24552;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 23;
+    break;
+  default:
+    ${vaar}_1020 = 102;
+	${vaar}_3223 = ${vaar}_1020 + 134;
+	${vaar}_Index = 24552;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 23; 
+	}
+}
+	}
+}`;
+    }
+
+    function gerarVariaveis_Javascript(vaar) {
+        return `
+var ${vaar}_1020 = 100;
+var ${vaar}_3223 = ${vaar}_1020 + 120;
+var ${vaar}_Index = 1323;
+var ${vaar}_initVar = ${vaar}_3223 * 2;
+var ${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+var ${vaar}_address = ${vaar}_primary * 10;`;
+    }
+    function gerarCodigo_Javascript(vaar) {
+        return `
+
+if (true) 
+{
+  switch (${vaar}_1020) 
+  {
+  case 1:
+    ${vaar}_1020 = 100;
+	${vaar}_3223 = ${vaar}_1020 + 1220;
+	${vaar}_Index = 132;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 2;
+	if (true) 
+{
+  switch (${vaar}_1020) 
+  {
+  case 1:
+    ${vaar}_1020 = 100;
+	${vaar}_3223 = ${vaar}_1020 + 1220;
+	${vaar}_Index = 132;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 2;
+    break;
+  case 1:
+	${vaar}_1020 = 102;
+	${vaar}_3223 = ${vaar}_1020 + 134;
+	${vaar}_Index = 24552;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 23;
+    break;
+  default:
+    ${vaar}_1020 = 102;
+	${vaar}_3223 = ${vaar}_1020 + 134;
+	${vaar}_Index = 24552;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 23; 
+	}
+}
+    break;
+  case 1:
+	${vaar}_1020 = 102;
+	${vaar}_3223 = ${vaar}_1020 + 134;
+	${vaar}_Index = 24552;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 23;
+	if (true) 
+{
+  switch (${vaar}_1020) 
+  {
+  case 1:
+    ${vaar}_1020 = 100;
+	${vaar}_3223 = ${vaar}_1020 + 1220;
+	${vaar}_Index = 132;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 2;
+    break;
+  case 1:
+	${vaar}_1020 = 102;
+	${vaar}_3223 = ${vaar}_1020 + 134;
+	${vaar}_Index = 24552;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 23;
+    break;
+  default:
+    ${vaar}_1020 = 102;
+	${vaar}_3223 = ${vaar}_1020 + 134;
+	${vaar}_Index = 24552;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 23; 
+	}
+}
+    break;
+  default:
+    ${vaar}_1020 = 102;
+	${vaar}_3223 = ${vaar}_1020 + 134;
+	${vaar}_Index = 24552;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 23; 
+	if (true) 
+{
+  switch (${vaar}_1020) 
+  {
+  case 1:
+    ${vaar}_1020 = 100;
+	${vaar}_3223 = ${vaar}_1020 + 1220;
+	${vaar}_Index = 132;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 2;
+    break;
+  case 1:
+	${vaar}_1020 = 102;
+	${vaar}_3223 = ${vaar}_1020 + 134;
+	${vaar}_Index = 24552;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 23;
+    break;
+  default:
+    ${vaar}_1020 = 102;
+	${vaar}_3223 = ${vaar}_1020 + 134;
+	${vaar}_Index = 24552;
+	${vaar}_initVar = ${vaar}_3223 * 4;
+	${vaar}_primary = ${vaar}_1020 + ${vaar}_3223;
+	${vaar}_address = ${vaar}_primary * 23; 
+	}
+}
+	}
+}`;
+    }
+
+
+    function gerarVariaveis_HTML(vaar) {
+        return ``;
+    }
+    function gerarCodigo_HTML(vaar) {
+        return ` src_0 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1Csp"  src_1 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspN"  src_2 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNm"  src_3 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmO"  src_4 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOS"  src_5 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOSc"  src_6 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl"  src_7 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl2"  src_8 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21"  src_9 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21l"  src_10 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ"  src_11 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2"  src_12 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2E"  src_13 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQ"  src_14 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQV"  src_15 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVE"  src_16 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVEC"  src_17 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECk"  src_18 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkD"  src_19 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc"  src_20 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc1"  src_21 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17"  src_22 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17o"  src_23 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17ox"  src_24 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxs"  src_25 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsu"  src_26 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsun"  src_27 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunq"  src_28 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqG"  src_29 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY"  src_30 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2"  src_31 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2w"  src_32 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg"  src_33 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7"  src_34 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7s"  src_35 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sM"  src_36 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMb"  src_37 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbK"  src_38 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKw"  src_39 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKwe"  src_40 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweF"  src_41 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQ"  src_42 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQw"  src_43 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwA"  src_44 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAd"  src_45 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdY"  src_46 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYt"  src_47 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA"  src_48 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8"  src_49 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8Z"  src_50 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8Zw"  src_51 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJ"  src_52 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJw"  src_53 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwz"  src_54 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzB"  src_55 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBs"  src_56 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsy"  src_57 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyX"  src_58 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXw"  src_59 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwx"  src_60 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX"  src_61 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5"  src_62 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5v"  src_63 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vc"  src_64 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcs"  src_65 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcst"  src_66 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstV"  src_67 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVG"  src_68 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGy"  src_69 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyi"  src_70 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC"  src_71 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1"  src_72 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1X"  src_73 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1Xy"  src_74 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyG"  src_75 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGj"  src_76 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJ"  src_77 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJX"  src_78 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXu"  src_79 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXuD"  src_80 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXuDb"  src_81 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXuDbW"  src_82 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXuDbWs"  src_83 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXuDbWsP"  src_84 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXuDbWsPB"  src_85 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXuDbWsPBs"  src_86 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXuDbWsPBs9"  src_87 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXuDbWsPBs9Q"  src_88 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXuDbWsPBs9QE"  src_89 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXuDbWsPBs9QE9"  src_90 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXuDbWsPBs9QE9o"  src_91 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXuDbWsPBs9QE9on"  src_92 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXuDbWsPBs9QE9ono"  src_93 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXuDbWsPBs9QE9ono8"  src_94 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXuDbWsPBs9QE9ono8q"  src_95 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXuDbWsPBs9QE9ono8qJ"  src_96 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXuDbWsPBs9QE9ono8qJv"  src_97 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXuDbWsPBs9QE9ono8qJvu"  src_98 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXuDbWsPBs9QE9ono8qJvui"  src_99 = "/google=fragment_nUrYsQofPU7rXlRTY6nPPVabUI78E5uUAOjIyXeIbBnTBEuQ2xnTFY5BTqdSSqKTAl1ibjvb2ONnIpIqoqfgQJoLTRXiTuYU1CspNmOScl21lQ2EQVECkDc17oxsunqGY2wg7sMbKweFQwAdYtA8ZwJwzBsyXwxX5vcstVGyiC1XyGjJXuDbWsPBs9QE9ono8qJvuiT" `;
+    }
+
+
+    function gerarVariaveis_Cmm(vaar) {
+        return `
+int ${vaar}_1020[10] = { 0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9 };
+int ${vaar}_3223[6] = { 0xA, 0xB, 0xC, 0xD, 0xE, 0xF };
+int ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+int ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+int ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+int ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));`;
+    }
+    function gerarCodigo_Cmm(vaar) {
+        return `
+switch (${vaar}_Index)
+{
+	case 1:
+	switch (${vaar}_Index)
+{
+	case 1:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+	case 2:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+	case 3:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+	case 4:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+	case 5:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+}
+	break;
+	case 2:
+	switch (${vaar}_Index)
+{
+	case 1:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+	case 2:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+	case 3:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+	case 4:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+	case 5:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+}
+	break;
+	case 3:
+	switch (${vaar}_Index)
+{
+	case 1:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+	case 2:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+	case 3:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+	case 4:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+	case 5:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+}
+	break;
+	case 4:
+	switch (${vaar}_Index)
+{
+	case 1:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+	case 2:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+	case 3:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+	case 4:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+	case 5:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+}
+	break;
+	case 5:
+	switch (${vaar}_Index)
+{
+	case 1:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+	case 2:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+	case 3:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+	case 4:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+	case 5:
+	${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+	${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+	${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+	${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));
+	break;
+}
+	break;
+}`;
+    }
+
+
+    function gerarVariaveis_Csharp(vaar = 'BresoDEV') {
+        return `public static int[] ${vaar}_1020 = new int[] { 0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9 };
+public static int[] ${vaar}_3223 = new int[] { 0xA, 0xB, 0xC, 0xD, 0xE, 0xF };
+public static int ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+public static int ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+public static int ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+public static int ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));`;
+    }
+
+    function gerarCodigo_Csharp(vaar = 'BresoDEV') {
+        return ` 
+switch (${vaar}_Index)
+{
+    case 1:
+    switch (${vaar}_Index)
+{
+    case 1:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));			
+    break;
+    case 2:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));				
+    break;
+    
+    case 3:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));				
+    break;
+    
+    case 4:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));				
+    break;
+    
+    case 5:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));				
+    break;
+     
+}			
+    break;
+    case 2:
+    switch (${vaar}_Index)
+{
+    case 1:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));			
+    break;
+    case 2:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));				
+    break;
+    
+    case 3:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));				
+    break;
+    
+    case 4:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));				
+    break;
+    
+    case 5:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));				
+    break;
+     
+}				
+    break;
+    
+    case 3:
+    switch (${vaar}_Index)
+{
+    case 1:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));			
+    break;
+    case 2:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));				
+    break;
+    
+    case 3:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));				
+    break;
+    
+    case 4:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));				
+    break;
+    
+    case 5:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));				
+    break;
+     
+}				
+    break;
+    
+    case 4:
+switch (${vaar}_Index)
+{
+    case 1:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));			
+    break;
+    case 2:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));				
+    break;
+    
+    case 3:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));				
+    break;
+    
+    case 4:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));				
+    break;
+    
+    case 5:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));				
+    break;
+     
+}				
+    break;
+    
+    case 5:
+switch (${vaar}_Index)
+{
+    case 1:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));			
+    break;
+    case 2:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));				
+    break;
+    
+    case 3:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));				
+    break;
+    
+    case 4:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));				
+    break;
+    
+    case 5:
+    ${vaar}_Index = (${vaar}_3223[${vaar}_1020[0x0]] + ${vaar}_3223[${vaar}_1020[0x5]]) - 25;
+    ${vaar}_initVar = (${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + 262 - 274;
+    ${vaar}_primary = ((${vaar}_3223[${vaar}_1020[0x2]] + (${vaar}_Index * 0xA)) + (${vaar}_3223[${vaar}_1020[0x3]] + (${vaar}_Index / 0xA))) - 277 + 252;
+    ${vaar}_address = (${vaar}_3223[${vaar}_1020[0x2]] * (${vaar}_Index * 0xA)) - (${vaar}_3223[${vaar}_1020[0x3]] * (${vaar}_Index / 0xA));				
+    break;
+     
+}			
+    break;
+     
+}`;
+    }
+
+
+
+    function CopiarVars() {
+        document.getElementById("var").select();
+        document.execCommand("copy");
+        msgbox('Sucesso','Variaveis copiadas com sucesso!');
+    }
+    function CopiarCode() {
+        document.getElementById("code").select();
+        document.execCommand("copy");
+        msgbox('Sucesso','Codigo copiado com sucesso!');
+    }
+
+
+    function msgbox(titulo, texto, tempo = 1000, layout = 0, corFundo = 'green', corfonte = 'aliceblue', borderradius = true, textoCentralizado = false) {
+        var topo = 10;
+        var opacidade = 0.0;
+        const rect = document.createElement('div');
+        rect.style.position = 'fixed';
+        rect.style.zIndex = '10000';
+        rect.style.minWidth = '25%';
+        rect.style.maxWidth = '50%';
+
+        //rect.style.height = '100px';
+        if (borderradius) {
+            rect.style.borderRadius = '10px';
+        }
+        rect.style.backgroundColor = corFundo;
+
+        switch (layout) {
+            case 0:
+                rect.style.right = '10px';
+                topo = 10;
+                rect.style.top = topo + 'px';
+                if (textoCentralizado) { rect.style.textAlign = 'center'; }
+                else { rect.style.textAlign = 'right'; }
+                break;
+            case 1:
+                rect.style.left = '10px';
+                topo = 10;
+                rect.style.top = topo + 'px';
+                if (textoCentralizado) { rect.style.textAlign = 'center'; }
+                else { rect.style.textAlign = 'left'; }
+                break;
+            case 2:
+                rect.style.left = '10px';
+                topo = 10;
+                rect.style.bottom = topo + 'px';
+                if (textoCentralizado) { rect.style.textAlign = 'center'; }
+                else { rect.style.textAlign = 'left'; }
+                break;
+
+            case 3:
+                rect.style.right = '10px';
+                topo = 10;
+                rect.style.bottom = topo + 'px';
+                if (textoCentralizado) { rect.style.textAlign = 'center'; }
+                else { rect.style.textAlign = 'right'; }
+                break;
+            default:
+                rect.style.right = '10px';
+                topo = 10;
+                rect.style.top = topo + 'px';
+                if (textoCentralizado) { rect.style.textAlign = 'center'; }
+                else { rect.style.textAlign = 'right'; }
+                break;
+        }
+
+
+        rect.style.padding = '10px';
+        rect.style.opacity = opacidade;
+
+
+        const titlee = document.createElement('span');
+        titlee.innerHTML = titulo;
+        titlee.style.color = corfonte;
+        titlee.style.backgroundColor = corFundo
+
+        const alerta = document.createElement('span');
+        alerta.innerHTML = '<br>' + texto;
+        alerta.style.color = corfonte;
+        alerta.style.backgroundColor = corFundo
+
+
+        rect.appendChild(titlee);
+        rect.appendChild(alerta);
+        document.body.appendChild(rect);
+
+        var lp = setInterval(() => {
+            if (opacidade <= 0.9) {
+                opacidade += 0.002;
+                rect.style.opacity = opacidade;
+            }
+            else {
+                clearInterval(lp);
+                setTimeout(() => {
+                    var loop = setInterval(() => {
+                        if (topo !== window.innerHeight) {
+                            topo++;
+
+                            if (layout === 0 || layout === 1) { rect.style.top = topo + 'px'; }
+
+                            opacidade -= 0.002;
+                            rect.style.opacity = opacidade;
+                        }
+                        else {
+
+                            clearInterval(loop);
+                            rect.remove();
+                        }
+
+
+                    }, 1);
+                }, tempo);
+            }
+
+
+        }, 1);
+
+    }
+</script>
+
+</html>

@@ -1,7 +1,0 @@
-
-var BresoDEV_1020 = 100;
-var BresoDEV_3223 = BresoDEV_1020 + 120;
-var BresoDEV_Index = 1323;
-var BresoDEV_initVar = BresoDEV_3223 * 2;
-var BresoDEV_primary = BresoDEV_1020 + BresoDEV_3223;
-var BresoDEV_address = BresoDEV_primary * 10;

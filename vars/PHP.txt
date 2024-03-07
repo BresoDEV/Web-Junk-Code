@@ -1,7 +1,0 @@
-$BresoDEV_1020 = [0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9];
-$BresoDEV_3223 = [0xA, 0xB, 0xC, 0xD, 0xE, 0xF];
-
-$BresoDEV_Index = ($BresoDEV_3223[$BresoDEV_1020[0x0]] + $BresoDEV_3223[$BresoDEV_1020[0x5]]) - 25;
-$BresoDEV_initVar = ($BresoDEV_3223[$BresoDEV_1020[0x2]] + ($BresoDEV_Index * 0xA)) + 262 - 274;
-$BresoDEV_primary = (($BresoDEV_3223[$BresoDEV_1020[0x2]] + ($BresoDEV_Index * 0xA)) + ($BresoDEV_3223[$BresoDEV_1020[0x3]] + ($BresoDEV_Index / 0xA))) - 277 + 252;
-$BresoDEV_address = ($BresoDEV_3223[$BresoDEV_1020[0x2]] * ($BresoDEV_Index * 0xA)) - ($BresoDEV_3223[$BresoDEV_1020[0x3]] * ($BresoDEV_Index / 0xA));

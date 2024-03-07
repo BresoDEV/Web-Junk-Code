@@ -1,7 +1,0 @@
-
-Dim BresoDEV_1020 As Integer
-Dim BresoDEV_3223 As Integer
-Dim BresoDEV_Index As Integer
-Dim BresoDEV_initVar As Integer
-Dim BresoDEV_primary As Integer
-Dim BresoDEV_address As Integer
